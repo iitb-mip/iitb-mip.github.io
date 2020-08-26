@@ -1,8 +1,3 @@
-/**
- * Particle Network Animation
- * Inspiration: https://github.com/JulianLaval/canvas-particle-network
- */
-
 (function () {
   var ParticleNetworkAnimation, PNA;
   ParticleNetworkAnimation = PNA = function () {};
@@ -87,7 +82,7 @@
   var ParticleNetwork = function (parent) {
     this.options = {
       velocity: 1, // the higher the faster
-      density: 10000, // the lower the denser
+      density: 5000, // the lower the denser
       netLineDistance: 200,
       netLineColor: "#4271B8",
       particleColors: ["#933E99"], // ['#6D4E5C', '#aaa', '#FFC458' ]
@@ -215,7 +210,7 @@
 
   ParticleNetwork.prototype.bindUiActions = function () {
     // Mouse / touch event handling
-    this.spawnQuantity = 3;
+    this.spawnQuantity = 2;
     this.mouseIsDown = false;
     this.touchIsMoving = false;
 
