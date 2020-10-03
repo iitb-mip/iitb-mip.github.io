@@ -82,14 +82,14 @@
   var ParticleNetwork = function (parent) {
     this.options = {
       velocity: 1, // the higher the faster
-      density: 5000, // the lower the denser
+      density: 8000, // the lower the denser
+      maxParticles: 500,
       netLineDistance: 200,
       netLineColor: "#4271B8",
       particleColors: ["#933E99"], // ['#6D4E5C', '#aaa', '#FFC458' ]
     };
     this.canvas = parent.canvas;
     this.ctx = parent.ctx;
-
     this.init();
   };
 
@@ -115,6 +115,7 @@
       clearInterval(this.createIntervalId);
       this.createIntervalId = setInterval(
         function () {
+          if (this.particles.length > this.options.maxParticles) return;
           if (counter < quantity - 1) {
             // Create particle object
             this.particles.push(new Particle(this));
@@ -123,11 +124,13 @@
           }
           counter++;
         }.bind(this),
-        250
+        10
       );
     } else {
       // Create particle objects
+      if (this.particles.length > this.options.maxParticles) return;
       for (var i = 0; i < quantity; i++) {
+        if (this.particles.length > this.options.maxParticles / 2) break;
         this.particles.push(new Particle(this));
       }
     }
@@ -215,6 +218,7 @@
     this.touchIsMoving = false;
 
     this.onMouseMove = function (e) {
+      if (this.particles.length > this.options.maxParticles) return;
       if (!this.interactionParticle) {
         this.createInteractionParticle();
       }
@@ -233,6 +237,7 @@
     }.bind(this);
 
     this.onMouseDown = function (e) {
+      if (this.particles.length > this.options.maxParticles) return;
       this.mouseIsDown = true;
       var counter = 0;
       var quantity = this.spawnQuantity;
