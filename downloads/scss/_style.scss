@@ -1,0 +1,21 @@
+.particle-network-animation {
+  height: 100vh;
+  .logo-div {
+    text-align: center;
+    pointer-events: none;
+    color: white;
+    position: absolute;
+    top: 25%;
+    left: 33%;
+    img {
+      width: 300px;
+    }
+  }
+}
+.logo-div {
+  color: white;
+  text-align: center;
+  img {
+    width: 300px;
+  }
+}
