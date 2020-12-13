@@ -197,6 +197,7 @@ video {
 .btn-secondary {
   background-color: #6f60ac;
   border-color: #933e99;
+  padding: 10px 50px;
 }
 
 .btn-secondary:active,
